@@ -1,29 +1,29 @@
 {
-  "name": "fhenix-hardhat-example",
+  "name": "luxfhe-hardhat-example",
   "version": "1.0.0",
-  "description": "An example repository to get you started with Fhenix development",
+  "description": "An example repository to get you started with luxfhe development",
   "scripts": {
     "test": "hardhat test",
-    "clean": "rimraf ./artifacts ./cache ./coverage ./types ./coverage.json ./deployments/localfhenix",
+    "clean": "rimraf ./artifacts ./cache ./coverage ./types ./coverage.json ./deployments/localluxfhe",
     "compile": "hardhat compile",
     "task:deploy": "hardhat deploy",
     "task:addCount": "hardhat task:addCount",
     "task:getCount": "hardhat task:getCount",
     "task:getFunds": "hardhat task:getFunds",
-    "localfhenix:start": "hardhat localfhenix:start",
-    "localfhenix:stop": "hardhat localfhenix:stop",
-    "faucet": "hardhat task:fhenix:usefaucet"
+    "localluxfhe:start": "hardhat localluxfhe:start",
+    "localluxfhe:stop": "hardhat localluxfhe:stop",
+    "faucet": "hardhat task:luxfhe:usefaucet"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fhenixprotocol/fhenix-hardhat-example.git"
+    "url": "git+https://github.com/luxfhe/luxfhe-hardhat-example.git"
   },
-  "author": "Fhenix",
+  "author": "luxfhe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fhenixprotocol/fhenix-hardhat-example/issues"
+    "url": "https://github.com/luxfhe/luxfhe-hardhat-example/issues"
   },
-  "homepage": "https://github.com/fhenixprotocol/fhenix-hardhat-example#readme",
+  "homepage": "https://github.com/luxfhe/luxfhe-hardhat-example#readme",
   "devDependencies": {
     "@luxfhe/contracts": "^0.5.0",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.6",
@@ -43,8 +43,8 @@
     "chalk": "^4.1.2",
     "dotenv": "^16.4.5",
     "ethers": "^6.11.1",
-    "fhenix-hardhat-docker": "^0.2.0-beta.0",
-    "fhenix-hardhat-plugin": "^0.2.0-beta.0",
+    "luxfhe-hardhat-docker": "^0.2.0-beta.0",
+    "luxfhe-hardhat-plugin": "^0.2.0-beta.0",
     "hardhat": "^2.20.1",
     "hardhat-deploy": "^0.11.45",
     "hardhat-gas-reporter": "^1.0.10",

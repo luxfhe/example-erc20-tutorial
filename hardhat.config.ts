@@ -2,8 +2,8 @@
 // Tasks
 import "@nomicfoundation/hardhat-toolbox";
 import {config as dotenvConfig} from "dotenv";
-import "fhenix-hardhat-docker";
-import "fhenix-hardhat-plugin";
+import "@luxfhe/hardhat-docker";
+import "@luxfhe/hardhat-plugin";
 import "hardhat-deploy";
 import {HardhatUserConfig} from "hardhat/config";
 import {resolve} from "path";
@@ -13,7 +13,7 @@ const dotenvConfigPath: string = process.env.DOTENV_CONFIG_PATH || "./.env";
 dotenvConfig({ path: resolve(__dirname, dotenvConfigPath) });
 
 const TESTNET_CHAIN_ID = 8008135;
-const TESTNET_RPC_URL = "https://api.helium.fhenix.zone";
+const TESTNET_RPC_URL = "https://api.helium.luxfhe.zone";
 
 const testnetConfig = {
     chainId: TESTNET_CHAIN_ID,
@@ -40,8 +40,8 @@ if (!keys) {
 
 const config: HardhatUserConfig = {
   solidity: "0.8.31",
-  // Optional: defaultNetwork is already being set to "localfhenix" by fhenix-hardhat-plugin
-  defaultNetwork: "localfhenix",
+  // Optional: defaultNetwork is already being set to "localluxfhe" by @luxfhe/hardhat-plugin
+  defaultNetwork: "localluxfhe",
   networks: {
     testnet: testnetConfig,
   },

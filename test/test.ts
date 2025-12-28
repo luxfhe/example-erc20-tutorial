@@ -1,6 +1,6 @@
 import {WrappingERC20} from "../types/contracts/WrappingERC20";
 import hre, { ethers } from 'hardhat';
-import { Permit } from "fhenixjs";
+import { Permit } from "luxfhejs";
 
 describe('Test WERC20', () =>  {
   let contractAddr: string;
@@ -13,7 +13,7 @@ describe('Test WERC20', () =>  {
 
   // We don't really need it as test but it is a test since it is async
   it(`Test Contract Deployment`, async () => {
-    const { ethers, fhenixjs } = hre;
+    const { ethers, luxfhejs } = hre;
     const { deploy } = hre.deployments;
     const [signer] = await ethers.getSigners();
 
@@ -28,7 +28,7 @@ describe('Test WERC20', () =>  {
 
     contractAddr = token.address;
 
-    permit = await fhenixjs.generatePermit(contractAddr, undefined, signer);
+    permit = await luxfhejs.generatePermit(contractAddr, undefined, signer);
     contract = (await ethers.getContractAt("WrappingERC20", contractAddr)) as unknown as WrappingERC20;
 
     console.log(`contractAddr: `, contractAddr);
@@ -54,7 +54,7 @@ describe('Test WERC20', () =>  {
     let privateBalanceBefore = await contract.getBalanceEncrypted(permit);
     console.log(`Private Balance before sending: ${privateBalanceBefore}`);
 
-    const encrypted = await hre.fhenixjs.encrypt_uint32(Number(amountToSend));
+    const encrypted = await hre.luxfhejs.encrypt_uint32(Number(amountToSend));
 
     await contract.transferEncrypted(destination, encrypted);
 

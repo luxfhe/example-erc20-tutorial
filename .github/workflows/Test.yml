@@ -14,9 +14,9 @@ jobs:
   test:
     services:
       # Label used to access the service container
-      localfhenix:
-        options: --name localfhenix
-        image: ghcr.io/fhenixprotocol/localfhenix:v0.2.3-rc.2
+      localluxfhe:
+        options: --name localluxfhe
+        image: ghcr.io/luxfheprotocol/localluxfhe:v0.2.3-rc.2
         ports:
           - 42000:3000
           - 42069:8547

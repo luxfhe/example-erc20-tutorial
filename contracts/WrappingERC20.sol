@@ -2,8 +2,8 @@
 pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@fhenixprotocol/contracts/access/Permissioned.sol";
-import "@fhenixprotocol/contracts/FHE.sol";
+import "@luxfhe/contracts/access/Permissioned.sol";
+import "@luxfhe/contracts/FHE.sol";
 
 contract WrappingERC20 is ERC20, Permissioned {
     mapping(address => euint32) internal _encBalances;
