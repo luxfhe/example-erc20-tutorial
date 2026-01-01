@@ -1,9 +1,6 @@
 // Plugins
-// Tasks
 import "@nomicfoundation/hardhat-toolbox";
 import {config as dotenvConfig} from "dotenv";
-import "@luxfhe/hardhat-docker";
-import "@luxfhe/hardhat-plugin";
 import "hardhat-deploy";
 import {HardhatUserConfig} from "hardhat/config";
 import {resolve} from "path";
@@ -15,7 +12,7 @@ dotenvConfig({ path: resolve(__dirname, dotenvConfigPath) });
 const TESTNET_CHAIN_ID = 8008135;
 const TESTNET_RPC_URL = "https://api.helium.luxfhe.zone";
 
-const testnetConfig = {
+const testnetConfig: any = {
     chainId: TESTNET_CHAIN_ID,
     url: TESTNET_RPC_URL,
 }
@@ -25,13 +22,12 @@ const testnetConfig = {
 const keys = process.env.KEY;
 if (!keys) {
   let mnemonic = process.env.MNEMONIC;
-  if (!mnemonic) {
-    throw new Error("No mnemonic or private key provided, please set MNEMONIC or KEY in your .env file");
-  }
-  testnetConfig['accounts'] = {
-    count: 10,
-    mnemonic,
-    path: "m/44'/60'/0'/0",
+  if (mnemonic) {
+    testnetConfig['accounts'] = {
+      count: 10,
+      mnemonic,
+      path: "m/44'/60'/0'/0",
+    }
   }
 } else {
   testnetConfig['accounts'] = [keys];
@@ -39,10 +35,19 @@ if (!keys) {
 
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.31",
-  // Optional: defaultNetwork is already being set to "localluxfhe" by @luxfhe/hardhat-plugin
-  defaultNetwork: "localluxfhe",
+  solidity: {
+    version: "0.8.27",
+    settings: {
+      evmVersion: "cancun",
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
+  },
+  defaultNetwork: "hardhat",
   networks: {
+    hardhat: {},
     testnet: testnetConfig,
   },
   typechain: {
